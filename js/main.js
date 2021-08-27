@@ -317,15 +317,386 @@
 
 //Задача на числа фибоначчи
 
-function fibonachi(count){
-    let fib = [];
-    for(let i = 0; i < count; i++){
-        if(i == 0) fib[i] = 1;
-        else if(i == 1) fib[i] = 2;
-        else fib[i] = fib[i-2] + fib[i-1];
-    }
-    return fib;
-}
+// function fibonachi(count){
+//     let fib = [];
+//     for(let i = 0; i < count; i++){
+//         if(i == 0) fib[i] = 1;
+//         else if(i == 1) fib[i] = 2;
+//         else fib[i] = fib[i-2] + fib[i-1];
+//     }
+//     return fib;
+// }
 
-let f = fibonachi(30);
-console.log(f);
+// let f = fibonachi(30);
+// console.log(f);
+
+
+// Задача на факториал
+
+// function factorial(n){
+//     let fact = 1;
+//     if(n == 0) return fact;
+//     for(let i = 1; i <= n; i++){
+//         fact *= i;
+//     }
+//     return fact;
+// }
+
+// let a = factorial(8);
+// console.log(a);
+
+// Задача сумма и произведение чисел в строке
+// Второй способ записи функции
+
+// let addAndMul = function(num){
+//     num += ""; //Превращаем переменную в строку
+//     let add = 0, mul = 1;
+//     for(let i = 0; i < num.length; i++){
+//         add += +num[i];
+//         mul *= num[i];
+//     }
+//     return{ //      возврат объекта
+//         "Сумма": add,
+//         "Произведение": mul
+//     };
+// };
+
+// console.log(addAndMul("79545"));
+
+
+//  Задача Числа наоборот
+// function revers(number){
+//     number += "";
+//     let reversNumber = "";
+//     for(let i = number.length - 1; i >= 0; i--){
+//         reversNumber += number[i];
+//     }
+//     return +reversNumber;
+// }
+
+// console.log(revers(12345));
+
+
+//Задача на количество четных и нечетных цифр в числе
+
+// function chetNechet(number){
+//     number += "";
+//     let chet = 0, nechet = 0;
+//     for(let i = 0; i < number.length; i++){
+//         if(number[i] % 2 == 0) chet ++;
+//         else nechet++;
+//     }
+//     return{
+//         "Четные числа": chet,
+//         "Нечетные числа": nechet
+//     };
+// }
+
+// console.log(chetNechet("87946549876516541"));
+
+
+//Задача на угадывание рандомного числа
+// function randomNum(){
+//     let num = Math.floor(Math.random()*100);
+//     for(let i = 1; i <= 10; i++){
+//         let result = +prompt(`Попытка № ${i}, Введите число:`);
+//         if (result == num){
+//             return alert(`Вы угадали число! Попыток: ${i}, число: ${num}`);
+//         }else if(result < num){
+//             alert(`Ваше число ${result} Меньше загаданного`);
+//         }else{
+//             alert(`Ваше число ${result} больше загаданного`);
+//         }
+//     }
+//     return alert(`Вы не угадали число, Ответ: ${num}`);
+// }
+
+// randomNum();
+
+
+/**         ДАТА И ВРЕМЯ        */
+
+
+// let a = new Date(60000);  //     Новый объект класса Date    // Параметр - число миллисекунд
+// let b = new Date("2015-05-01T10:15:36.941");
+// console.log(Date.parse("2015-05-01T10:15:36.941")); // Получаем количество миллисекнуд с января 1970
+// let a = new Date(2019,6,21,18,51,54,965); //        Месяца начинаются с 0
+// console.log(a.getFullYear());   //      getFullYear - Получаем год от даты
+// console.log(a.getMonth());   //      getMonth - Получаем месяц от даты
+// console.log(a.getDate());   //      getDate - Получаем День от даты
+// console.log(a.getHours());   //      getHours - Получаем Час от даты
+// console.log(a.getDay());   //      getDay - Получаем День недели от 0 до 6 , при этом 0 - это воскресенье , а 6 - суббота
+// console.log(a.getTime());   //      getTime - Получаем число миллисекнуд
+// console.log(a.getTimezoneOffset());   //      getTimezoneOffset - Получаем разницу между нашим часовым поясом и UTC 0
+// let a = new Date(2021,1,28);
+// a.setDate(a.getDate() + 2);
+// console.log(+a);
+
+// let a = Date.now(new Date());
+// for(let i = 0; i < 1000; i++){
+//     console.log(0);
+// }
+// let b = Date.now(new Date());
+// console.log(b-a);   //      Время за которое выполнился цикл
+
+
+//  ВЫвод даты
+// let a = new Date(2021,11,15,12,30,0); 
+// let options = {
+//     // era: "long",
+//     year: "numeric",
+//     month: "long",
+//     day: "numeric",
+//     weekday: "long",
+//     // timezone: "UTC",
+//     hour: "numeric",
+//     minute: "numeric",
+//     // second: "numeric"
+// }
+
+// console.log(a.toLocaleString("ru", options));
+
+
+/**         ДОКУМЕНТАЦИЯ КОДА        */
+
+
+/**
+ * Функция преобразует строку с временем в минуты
+ * @param {string} time Время в виде строки, например "02:08" МОжет быть в диапазоне от "00:00" до "23:59".
+ * @return {number} Целое число в минутах, например время - "02:08" вернет 128 минут
+ */
+
+// function timeToMinute(time){
+//     try{
+//         let hour = +time.split(":")[0];
+//         let minute = +time.split(":")[1];
+//         if(!(hour >= 0 && hour <= 23) || !(minute >= 0 && minute <= 59)){
+//             throw new RangeError("Аргумент должен быть в формате 'HH:MM' 'HH' - должен быть от 0 до 23, а 'MM' - от 0 до 59. 'HH' и 'MM' должны быть числами и разделяться знаком ':'");  //      Генерирует ошибку
+//         }
+//         return hour * 60 + minute;
+//     } catch(error){
+//         console.log(error);
+//     }
+// }
+
+// console.log(timeToMinute("02:08"));
+
+
+/**         ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ        */
+
+// let admin = {
+//     rules: 777,
+//     isAdmin(){
+//         console.log("Я админ, " + this.name + " мои права " + this.rules);
+//     }
+// };
+
+
+// function User(name,age){    //      Функция конструктор , называется с большой буквы
+//     this.name = name;
+//     this.age = age;
+//     this.myInfo = function(){
+//         console.log("Я админ, " + this.name + " мои права " + this.rules);
+//     }
+//     // this.__proto__ = admin;
+// }
+
+// class User{    //     То же самое что и выше , только с помощью класса 
+//     constructor(name, age, admin = false){
+//         this.name = name;
+//         this.age = age;
+//         this.admin = admin;
+//     }
+//     myInfo(){
+//         console.log("Меня зовут " + this.name + " Возраст: " + this.age);
+//         if(this.admin == true){
+//             console.log(" Я админ");
+//         }
+//     }
+// }
+// class Moderator extends User{   //      Унаследование класса, унаследование определенного класса с помощью команды extends
+//     constructor(name, age, admin = false, moder = true){
+//         super(name, age, admin);    //      Так же добавляем с помощью super свойства из конструктора родителя
+//         this.moder = moder;
+//     }
+//     static addPost(){   //      Статическое свойство вызывается через точку, работает непосредственно с классом а не с объектом
+//         console.log("new Post");
+//     }
+//     static master = true;
+//     myInfo(){
+//         super.myInfo(); //      Спомощью super можно добавить ниже дополнительные свойства к методу myinfo
+//         console.log(" Я Модератор");
+//     }
+// }
+
+// let u1 = new User("Dima", 23, true);
+// let u2 = new User("Petya", 22);
+// let u3 = new User("Misha", 19);
+// let m1 = new Moderator("Kate", 24, true);   //      Имеет свойства класса родителя
+
+
+//      Практика
+
+
+// class People{
+//     /**
+//      * 
+//      * @param {String} fio По формату "Фамилия Имя Отчество"
+//      * @param {String} bday День рождения по формату "24.04.1998"
+//      * @param {String} num номер, если больше 2 номеров, то по формату "номер1 , номер2"
+//      * @param {Number} room Комната, просто номер комнаты
+//      */
+//     constructor(fio, bday, num = "", room = ""){
+//         let name = fio.toLowerCase().split(" ");
+//         this.name = {};
+//         this.name.f = name[0][0].toUpperCase() + name[0].slice(1); //       Фамилия с большой буквы. Первый индес - Фамилия , второй индекс первый символ фамилии. Далее пприбавляем все остальное с помощью slice с 1 индекса
+//         this.name.i = name[1][0].toUpperCase() + name[1].slice(1);
+//         this.name.o = name[2][0].toUpperCase() + name[2].slice(1);
+
+//         let date = bday.split(".");
+//         this.date = {};
+//         this.date.d = +date[0];
+//         this.date.m = +date[1];
+//         this.date.y = +date[2];
+
+//         this.number = num.split(", ");
+
+//         this.room = +room;
+//     }
+
+//     static month = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+
+//     /**
+//      * Вывести ФИО
+//      * @return {String} Строка формата Фамилия Имя Отчества
+//      */
+//     getFio(){
+//         return `${this.name.f} ${this.name.i} ${this.name.o}`;
+//     }
+
+//     /**
+//      * Вывести день рождения
+//      * @return {String} Строка формата 8 июля 1998
+//      */
+//     getBdate(){
+//         return `${this.date.d} ${People.month[this.date.m - 1]} ${this.date.y}`;
+//     }
+
+//     /**
+//      * Вывести Фамилия имя отчество.расширение
+//      * @param {String} extention Расширение , например JPEG или PNG
+//      * @return {String} для названия Изображения
+//      */
+//     getImgSrc(extention){
+//         return `${this.name.f}_${this.name.i}_${this.name.o}.${extention}`;
+//     }
+
+//     /**
+//      * Вывести все номера телефонов или только первый номер
+//      * @param {Boolean} allNumbers если true то все номера, есть false , то только первый номер
+//      * @return {String} Сттрока формата "89995823674"
+//      */
+//     getNumberList(allNumbers){
+//         if(this.number.length == 0 || this.number[0].length == 0)
+//             return undefined;
+//         if(allNumbers){
+//             return this.number.join(", ");
+//         } else {
+//             return this.number[0];
+//         }
+//     }
+// }
+
+// let people1 = new People("поливкина виктория сергеевна", "24.04.1998", "89255314789, 89772805239", 523);
+// let people2 = new People("беляев дмитрий алексеевич", "08.07.1998", "", 144);
+// console.log(people1.getFio());
+// console.log(people2.getFio());
+
+
+/**         Возможности ES6        */
+
+
+// function sum(a, b){
+//     return a+b;
+// }
+
+// let date = [4, 5];
+// console.log(sum(...date)); //        ... - это оператор расширения
+
+// let [a, b, c, d] = [10, 5, 8, 9];   //      Диструктивное присваивание
+
+// let sum1 = (a, b, c) => {return a+b+c};
+// let sum1 = (a, b, c) => a + b + c;  //      Второй способ
+
+// console.log(sum1(5, 6, 8));
+
+// let a = 0b0111; //      Возможность записывать переменные в двоичной системе счисления, в результате мы получаем число в десятичной
+// let b = 0o10;   //      То же самое , только в 8 системе счисления
+// console.log(a);
+// console.log(b);
+
+// let d = NaN;
+// console.log(Number.isNaN(d));   //      Проверяем получилось ли значение NaN
+
+
+//      Триганометрические методы
+// console.log(Math.sinh(0));  //      Гиперболический синус
+// console.log(Math.cosh(0));  //      Гиперболический косинус
+// console.log(Math.tanh(0));  //      Гиперболический тангенс
+// console.log(Math.asinh(0)); //      Обратный Гиперболический синус
+// console.log(Math.acosh(1)); //      Обратный Гиперболический косинус
+// console.log(Math.atanh(0)); //      Обратный Гиперболический тангенс
+// console.log(Math.hypot(2, 2, 1));   //      Теорема пифагора
+
+//      Алгибраические методы
+// console.log(Math.log2(16)); //      Логарифм по основанию 2
+// console.log(Math.log10(1000)); //      Логарифм по основанию 10
+// console.log(Math.log1p(0)); //      То же самое что и log(1 + Value)
+// console.log(Math.expm1(0)); //      Обратная функция log1p
+// console.log(Math.cbrt(8)); //      Корень кубический
+
+
+// console.log(Math.sign(16)); //      Определяет знак числа
+// console.log(Math.sign(-16));
+// console.log(Math.sign(0));
+
+// let a = "Hello i'm simple string".repeat(5); //      Меттод для повторения строки
+// console.log(a.includes("simple", 1));   //      Метод для поиска в строке. Можно указать индекс с какого вести поиск нужного слова
+// console.log(a.startsWith("simple"));    //      Начинается с
+// console.log(a.endsWith("string"));  //      Заканчивается на
+
+// let arr = ['a','b','c'];
+// let entries = arr.entries();
+// let keys = arr.keys();
+// let values = arr.values();
+// // arr.fill(0,1,3);    //      Заполнить массив 0 с 1 элемента по 3 элемента
+// console.log(arr);
+// console.log(...entries); //      Возвращает индекс и значение массива
+// console.log(...keys);    //      Возвращает индексы
+// console.log(...values);  //      Возвращает значения массива
+
+//      Множества
+// let set = new Set();    //      Элементы не могут повторяться
+// set.add(1);     //      Добавляются значения
+// set.add(2);
+// set.add(3);
+// set.add(1);     //      еще одна единица не добавтся
+// console.log(set);
+// console.log(set.has("4"));  //      проверяет есть ли значение в множестве
+// console.log(set.size);   //     размер множества
+// set.delete(2);  //      Удаляем элемент 2 из множества
+// console.log(set);
+// set.clear();        //      Очищает множество
+// console.log(set);
+
+// let arr = [1,2,3,4,5,6,8,7,1,4,3,5]
+// let arr2 = [...new Set(arr)];   //      Удаляет все дублирующиеся элементы массива
+// console.log(arr2);
+
+
+
+
+/**         РАБОТА С DOM        */
+
+//Записи о каждом уроке в папке example_DOM
+

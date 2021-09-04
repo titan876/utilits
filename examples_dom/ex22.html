@@ -13,7 +13,14 @@
   </div>
 
   <script>
-
+      let div = document.querySelector('div')
+      div.style.color = "black"
+      div.style.width = "300px"
+      div.style.backgroundColor = prompt("Цвет", "tomato")  //      Можем ввести цвет через диалоговое окно
+      div.style.display = "none"
+      setTimeout(() => div.style.display = "", 3000)
+      let style = getComputedStyle(div)
+      console.log(style)
   </script>
 </body>
 </html>

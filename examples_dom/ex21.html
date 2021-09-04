@@ -12,8 +12,17 @@
     <p>Сообщение</p>
   </div>
 
-  <script>
-
-  </script>
+    <script>
+        let div = document.querySelector('div')
+        div.className = "alert trxt block"  //      Добавляем класс к элементу
+        for(let name of div.classList){  //  Все классы будут доступны по отдельности
+            console.log(name)
+        }
+        div.classList.add('elem') //      Добавляем класс к элементу
+        div.classList.remove('block')   //      Удаляем класс 
+        div.classList.toString('block')     //      Добавляет класс если его нет , удаляет если он есть
+        console.log(div.classList.contains('alert'))    //      Проверка есть ли выбранный класс у элемента
+        
+    </script>
 </body>
 </html>

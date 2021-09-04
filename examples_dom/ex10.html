@@ -10,7 +10,15 @@
   <p title="Подсказка" class="text">Абзац текста</p>
 
   <script>
-
+    let elem = document.querySelector('p')
+    elem.setAttribute("class", "new_text")  //    Добавялем Атрибут для элемента с заменой
+    console.log(elem.hasAttribute('title')) //    пРОВЕРЯЕМ СУЩЕСТВУЕТ ЛИ АТРИБУТ У НАШЕГО ЭЛЕМЕНТА
+    elem.removeAttribute("title") //    Удаляем атрибут
+    console.log(elem.getAttribute('title')) //    Показывает значение атрибута
+    for(let attr of elem.attributes){
+      console.log(`${attr.name} = ${attr.value}`) //    Выводим все атрибуты и их значения
+    }
+    console.dir(elem) //    Выводим информацию об элементе
   </script>
 </body>
 </html>

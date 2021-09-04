@@ -12,7 +12,57 @@
   <div class="container"></div>
 
   <script>
+    function createCalendar(elem, year, month){
+      elem = document.querySelector(elem)
+
+      let mon = month -1
+      let d = new Date(year, mon)
+
+      let table = `
+        <table>
+          <caption>${month}.${year}</caption>
+          <tr>
+            <th>ПН</th>
+            <th>ВТ</th>
+            <th>СР</th>
+            <th>ЧТ</th>
+            <th>ПТ</th>
+            <th>СБ</th>
+            <th>ВС</th>
+          </tr>
+          <tr>
+      `
+
+      for(let i = 0; i <getDay(d); i++){ //    Генерируем ячейки для месяца
+        table += '<td></td>'
+      }
+
+      while(d.getMonth() == mon){
+        table += '<td>' + d.getDate() + '</td>' //    ОТображаем даты в ячейках
+        if(getDay(d) % 7 == 6){ //  Проверяем не является ли этот день ВС 
+          table += '</tr><tr>'  //  Если является переходим на новую строку
+        }
+        d.setDate(d.getDate() + 1)  //  Увеличиваем день на 1 и делаем опять цикл
+      }
+
+	  if(getDay(d) != 0){ 	//    Генерируем ячейки для месяца до конца
+		for(let i = getDay(d); i < 7; i++){ 
+        	table += '<td></td>'
+      	}
+	  }
+
+      table += '</tr></table>'
+      elem.innerHTML = table
+    }
     
+
+    function getDay(date){
+      let day = date.getDay()
+      if(day == 0) day = 7
+      return day - 1 
+    }
+
+    createCalendar('div','2021', 8)
   </script>
 </body>
 

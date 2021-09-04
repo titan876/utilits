@@ -13,7 +13,11 @@
   </div>
 
   <script>
+    let div = document.querySelector('div')
 
+    let div2 = div.cloneNode(true)    //    Копирует элемент. Если в параметре true будут скопированны и дочерние элементы
+    div2.querySelector('p').textContent = "Другое сообщение" // Поиск по элементу
+    div.after(div2)
   </script>
 </body>
 </html>

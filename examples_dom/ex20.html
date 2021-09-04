@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 20 - Часы</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Пример 20 - Часы</title>
 </head>
 <body>
 
-  <div id="clock"></div>
+	<div id="clock"></div>
 
-  <script>
+	<script>
+		function update(){
+			let date = new Date()
+			let hour = date.getHours()
+			let min = date.getMinutes()
+			let sec = date.getSeconds()
 
-  </script>
+			if(hour < 10) hour ='0' + hour //  Если значние меньше 10, то пишем вначале 0
+			if(min < 10) min ='0' + min
+			if(sec < 10) sec ='0' + sec
+
+			clock.textContent = `${hour}:${min}:${sec}`	//	Выводим в div с id clock
+		}
+		
+		setInterval(update, 1000)
+	</script>
 </body>
 </html>

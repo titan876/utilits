@@ -28,6 +28,28 @@
       }
     }
 
+    function createUl(obj){   //  ФУнкция выводит список элементов объекта
+      if(!Object.keys.length)
+        return
+      let ul = document.createElement('ul')
+      for(let key in obj){  //    Проходимся по всему объекту
+        let li = document.createElement('li')
+        if(!isNaN(obj[key]))  //    Проверяем содержится ли цифра после ключа
+          li.textContent = key + ' ' + obj[key] //  добавляем запись после название + количество
+        else
+          li.textContent = key  //  Если числа нет , просто пишем ключ
+        let childrenUl = createUl(obj[key]) //    Записываем функцию в переменную
+        if(childrenUl){ //    Если в переменной что-то записано
+          li.append(childrenUl) //  , то Добавляем запись
+        }
+        ul.append(li)
+      }
+      return ul
+    } 
+    function createTree(container,obj){
+      document.querySelector(container).append(createUl(obj))
+    }
+    createTree('body', data)
   </script>
 </body>
 </html>

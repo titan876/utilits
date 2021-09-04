@@ -10,7 +10,16 @@
   <p>Разделитель</p>
   <hr>
   <script>
+    let div = document.createElement('div') //    Создание элемента
+    div.className = 'alert'
+    div.innerHTML = '<p>Cообщение</>'
+    document.querySelector('hr').after(div) //    Добавление элемента в документ. append добавялет в самый низ тега body, prepend - в самое начала тега, before - перед тегом, after - после тега
 
+    let p = document.createElement('p')
+    p.textContent = 'Важное сообщение'
+    div.append(p, document.createElement('hr'), 'Важное сообщение 3')
+    
+    div.replaceWith(p)  //    Замещает элемент выбранным тегом
   </script>
 </body>
 </html>

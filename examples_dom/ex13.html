@@ -14,7 +14,11 @@
   </ul>
 
   <script>
-
+    let ul = document.querySelector('ul')
+    ul.insertAdjacentHTML('beforebegin', '<p>beforebegin</p>')  //    Добавляет элемент с тегами . Первый параметр - позиционирование, 2 элемент - само содержимое. Элемент добавляется на таком же уровне до элмента , который мы изначально вызвали
+    ul.insertAdjacentHTML('afterend', '<p>afterend</p>')  //    Элемент добавляется на таком же уровне после элмента , который мы изначально вызвали
+    ul.insertAdjacentHTML('afterbegin', '<li>afterbegin</li>')  // Элемент вставляется внутрь нашего списка
+    ul.insertAdjacentHTML('beforeend', '<li>beforeend</li>')  // Элемент вставляется внутрь нашего списка
   </script>
 </body>
 </html>

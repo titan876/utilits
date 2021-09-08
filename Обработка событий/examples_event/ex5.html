@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 5 - Объект события</title>
+</head>
+
+<body>
+  
+  <button class="btn">Кнопка</button>
+
+  <script>
+      document.querySelector('.btn').onclick = function(e){
+          console.log(e.type)
+          console.log(e.currentTarget)  //      Показывает элеент на котором сработало событие
+          console.log(this) //      то же самое что и выше
+          console.log(e.clientX)    //      Показывает координаты , куда было нажатие 
+          console.log(e.clientY)
+      }
+  </script>
+</body>
+
+</html>

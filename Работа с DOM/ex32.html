@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 32 - localStorage</title>
+</head>
+
+<body>
+
+  <script>
+      localStorage.setItem('key1', 385)    //      Устанавливаем значения в хранилище, первым идет ключ , потом значение
+      localStorage.setItem('key2', "string")
+      localStorage.setItem('key3', false)
+
+      console.log(localStorage.getItem('key2')) //      Выводим в консоль ключ из хранилища
+      console.log(localStorage.key(0))  //      Выводим ключ по индексу
+      console.log(localStorage.length)  //      Выводим Количество элементов в хранилище
+
+    //   localStorage.removeItem('ley3')   //      Удаляем данные из хранилища
+    //   localStorage.clear()  //      Очистка хранилища
+
+    for(let i = 0; i < localStorage.length; i++){
+        let key = localStorage.key(i)
+        console.log(`${key}: ${localStorage.getItem(key)}`)  //      Получаем строку и ее значение
+    }
+
+    for(let key in localStorage){   //      Выводит дополнительно свойства и методы 
+        if(!localStorage.hasOwnProperty(key)){
+            continue
+        }
+    console.log(key)
+    }
+
+    for(let key of Object.keys(localStorage)){   //      
+        console.log(`${key}: ${localStorage.getItem(key)}`)
+    }
+
+  </script>
+</body>
+
+</html>

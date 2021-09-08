@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 30 - Таймер</title>
+</head>
+
+<body>
+
+  <div class="timer-progresbar">
+    <div class="timer-progressbar__fill"></div>
+    <div class="timer-progressbar__empty"></div>
+  </div>
+
+  <script>
+    function myTimer(sec){
+        let startDate = new Date()
+        let endDate = new Date()
+        endDate = endDate.setSeconds(endDate.getSeconds() + sec)    //      Устанавливаем разницу исходя из заданного параметра
+        let interval = setInterval(() => {
+            let currentDate = new Date()
+            let leftPercent = Math.trunc((endDate - currentDate) / (endDate - startDate) * 100) //  Вычисляем проценты
+            let passedPercent = +(100 - leftPercent)
+
+            document.querySelector('.timer-progressbar__fill').textContent = passedPercent + '%'    //  Устанавливаем значение в процентах
+            document.querySelector('.timer-progressbar__fill').style.width = passedPercent + '%'    //  Устанавливаем прогресс в процентах
+            document.querySelector('.timer-progressbar__empty').textContent = leftPercent + '%'
+            document.querySelector('.timer-progressbar__empty').style.width = leftPercent + '%'
+
+            if(leftPercent == 0){
+                clearInterval(interval) //      Завершаем наш setInterval
+                document.querySelector('.timer-progressbar__empty').style.display = 'none'  //  Скрываем оставшиеся проценты
+            }
+        }, 1000)
+    }
+    myTimer(9)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 4 - Несколько обработчиков</title>
+</head>
+
+<body>
+  
+  <button class="btn">Кнопка</button>
+
+  <script>
+      function addTExt1(){
+          alert('First func')
+      }
+      function addTExt2(){
+          alert('second func')
+      }
+      function addTExt3(){
+          alert('third func')
+      }
+
+      document.querySelector('.btn').onclick = addTExt1
+      document.querySelector('.btn').addEventListener('click', addTExt2)    //      addEventListener можем добавлять несколько обработчиков событий на 1 элемент
+      document.querySelector('.btn').addEventListener('click', addTExt3)
+      document.querySelector('.btn').removeEventListener('click', addTExt3) //      Удаляет оброботчик событий
+  </script>
+</body>
+
+</html>

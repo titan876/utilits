@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 27 - Сортировка таблицы</title>
+</head>
+
+<body>
+
+  <script src="../js/const.js"></script>
+  <script>
+    function rooms(){
+        let rooms = []
+        for(let i = 0; i < people.length; i++){
+            rooms.push(
+                [ people[i]["room"], `${people[i]["name"]["f"]} ${people[i]["name"]["i"]} ${people[i]["name"]["o"]}` ]
+            )   //      Добавляем данные в массив
+        }
+        return rooms.sort((a, b) => +a[0] - b[0])  //      Возвращаем сортированный список
+    }
+
+    document.querySelector('body').innerHTML = '<table></table>'
+    let titleRooms = document.createElement('tr')
+    titleRooms.innerHTML = `
+        <th>Комната</th>
+        <th>ФИО</th>
+    `
+    document.querySelector('table').append(titleRooms)
+    for(let i = 0; i < rooms().length; i++){    //      Проверяем длинну функции , вызывая ее
+        let row = document.createElement('tr')
+        row.innerHTML = `
+            <td>${rooms()[i][0]}</td>
+            <td>${rooms()[i][1]}</td>
+        `
+        document.querySelector('table').append(row) //      Выводим отсотированные элементы
+    }
+  </script>
+</body>
+
+</html>

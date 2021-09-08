@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 29 - Дни рождения</title>
+</head>
+
+<body>
+  <div class="items"></div>
+
+  <script src="../js/const.js"></script>
+  <script>
+      people.forEach(function(item){
+        let fio = `${item["name"]["f"]} ${item["name"]["i"]} ${item["name"]["o"]}`  //      Записываем в переменную ФИО целиком
+        let date = item["date"] ? `${item["date"]["d"]} ${month[+item["date"]["m"]]} ${item["date"]["y"]} г.` : ``  //      Добавляем проверку на введена ли дата
+        let element = document.createElement('p') //        Создаем элемент в который будем передавать рожденных в этом месяце
+        element.innerHTML = fio + " " + date    //      Добавляем в HTML как будет выглядить элемент
+        for(let i = 1; i <= 12; i++){   //      СОздаем цикл для отрисовки месяцев
+            if(item["date"]["m"] == i){     //      Сопоставляем название месяца и его индекс
+                if(document.querySelector(`.items > div .item${i}`) == null){    //     Проверяем что бы месяца не повторялись
+                    let div = document.createElement('div') //      Создаем блок для месяца
+                    div.classList.add('item')
+                    div.innerHTML = `
+                        <h4>${monthIp[i]}</h4>
+                        <div class='item${i}'></div>    
+                    `
+                    // <div class='item${i}'></div>     Устанавливаем уникальный класс для каждого элемента
+                    document.querySelector('.items').append(div)    
+                }
+                document.querySelector(`.items > div .item${i}`).append(element)
+            }
+        }
+      })
+  </script>
+</body>
+
+</html>

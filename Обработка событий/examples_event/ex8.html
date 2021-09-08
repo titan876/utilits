@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 8 - Простой слайдер</title>
+</head>
+
+<body>
+
+  <h4>Простой слайдер</h4>
+  <div class="slider">
+    <div class="slider__image">
+      <img src="../img/1.jpg">
+    </div>
+    <div class="slider__breadcrumbs">
+      <button class="slider__item active">1</button>
+      <button class="slider__item">2</button>
+      <button class="slider__item">3</button>
+      <button class="slider__item">4</button>
+      <button class="slider__item">5</button>
+      <button class="slider__item">6</button>
+      <button class="slider__item">7</button>
+    </div>
+  </div>
+
+  <script>
+      let btns = document.querySelectorAll('.slider__item')
+      for(let btn of btns){
+          btn.onclick = function(){
+            //   console.log(this.innerHTML)
+            document.querySelector('.slider__breadcrumbs .active').classList.remove('active')   //      Удаляем класс active с элемента, при выборе другого элемента
+            this.classList.add('active')    //      Дбавляем класс active на выбранный элемент
+            document.querySelector('.slider__image img').setAttribute('src', `../img/${this.innerHTML}.jpg`)    //      Добавляем атрибут src на выбранный элемент и подставляем название фото под выбранный элемент
+          }
+      }
+  </script>
+</body>
+
+</html>

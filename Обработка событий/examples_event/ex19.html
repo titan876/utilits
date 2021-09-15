@@ -13,11 +13,38 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae veniam voluptates hic! Dolorum doloremque modi suscipit harum magni, debitis sed facere, rerum magnam dolor pariatur, distinctio voluptatem rem animi.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae veniam voluptates hic! Dolorum doloremque modi suscipit harum magni, debitis sed facere, rerum magnam dolor pariatur, distinctio voluptatem rem animi.</p>
   
-  <button data-tooltip="длинный текст с подсказкой">Кнопка 1</button>
-  <button data-tooltip="Подсказка с<br> HTML тегами">Кнопка 2</button>
+  <button data-tooltype="длинный текст с подсказкой">Кнопка 1</button>
+  <button data-tooltype="Подсказка с<br> HTML тегами">Кнопка 2</button>
 
   <script>
-    
+      let tooltypeElem;
+      document.onmouseover = function(e){
+          let target = e.target
+          let tooltypeHtml = target.dataset.tooltype
+          if(!tooltypeHtml) return
+          tooltypeElem = document.createElement('div')
+          tooltypeElem.className = "tooltip"
+          tooltypeElem.innerHTML = tooltypeHtml
+          document.body.append(tooltypeElem)
+
+          let coords = target.getBoundingClientRect()
+          let left = coords.left + (target.offsetWidth - tooltypeElem.offsetWidth) / 2
+          if(left < 0) left = 5
+
+          let top = coords.top - tooltypeElem.offsetHeight - 5
+          if(top < 0) top = coords.top + target.offsetHeight + 5
+
+          tooltypeElem.style.left = left + 'px'
+          tooltypeElem.style.top = top + 'px'
+      }
+
+      document.onmouseout = function(){
+          if(tooltypeElem){
+              tooltypeElem.remove(
+                  tooltypeElem = null
+              )
+          }
+      }
   </script>
 </body>
 

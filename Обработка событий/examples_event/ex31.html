@@ -16,9 +16,26 @@
   </form>
   <div id="error"></div>
 
-  <script>
+<script>
+    let input = document.forms[0].mail
+    // input.onblur = function(){
+    //     if(!input.value.includes('@')){
+    //         input.classList.add('invalid')
+    //         error.innerHTML = "Введите правильную почту"
+    //         // input.focus()    //      не позволяет перейти на другое поле
+    //     }      
+    // }
+    // input.onfocus = function(){
+    //     if(this.classList.contains('invalid')){
+    //         this.classList.remove('invalid')
+    //         error.innerHTML = ""
+    //     }
+    // }
+
+    form.addEventListener('focus', () => form.classList.add('bgc'), true)
+    form.addEventListener('blur', () => form.classList.remove('bgc'), true)
     
-  </script>
+</script>
 </body>
 
 </html>

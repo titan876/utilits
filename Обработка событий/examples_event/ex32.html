@@ -12,9 +12,38 @@
 
   <img src="..//img/1.jpg" id="image">
 
-  <script>
-    
-  </script>
+<script>
+    image.tabIndex = 0
+
+    image.onclick = function(){
+        this.style.left = this.getBoundingClientRect().left + 'px'
+        this.style.left = this.getBoundingClientRect().top + 'px'
+        this.style.position = 'fixed'
+
+        image.onkeydown = function(e){
+            switch(e.key){
+                case 'ArrowLeft':
+                    this.style.left = parseInt(this.style.left) - this.offsetWidth + 'px'
+                    console.log("Работает")
+                    return false
+                case 'ArrowRight':
+                    this.style.left = parseInt(this.style.left) + this.offsetWidth + 'px'
+                    console.log("Работает")
+                    return false
+                case 'ArrowUp':
+                    this.style.top = this.style.top - this.offsetHeight + 'px'
+                    console.log("Работает")
+                    return false
+                case 'ArrowDown':
+                    this.style.top = this.style.top + this.offsetHeight + 'px'
+                    console.log("Работает")
+                    return false
+            }
+        }
+    }
+
+    /*          КНОПКИ ВВЕРХ И ВНИЗ НЕ РАБОТАЮТ         */
+</script>
 </body>
 
 </html>

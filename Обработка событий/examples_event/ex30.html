@@ -32,9 +32,32 @@
     </select>
   </form>
 
-  <script>
-    
-  </script>
+<script>
+    let form = document.forms.form1 //      можно указать индек для поиска определенного элемента
+    // console.log(form)   //      Находим форму
+
+    // let radioBtns = form.elements.radioBtn      //      Выбираем элементы радио
+    // console.log(radioBtns[0].value)
+
+    // let fieldSet = form.elements.myFieldset
+    // console.log(fieldSet.elements.password)
+
+    // let select = form.elements.mySelect
+    // console.log(select.value)
+    // select.options[2].selected = true
+    // select.selectedIndex = 1        //      то же что и выше
+    // select.value = 'item3'      //      то же что и выше
+
+    let select = form.elements.mySelect2
+    // let selected = Array.from(select.options)
+    // .filter(option => option.selected)  //      получаем выделенные элементы
+    // .map(option => option.value)        //      получаем выделенные элементы
+    // console.log(selected)       
+
+    let newOpt = new Option("Элемент 4", "item7", true) //      Добавляем новый select
+    // console.log(newOpt)
+    select.append(newOpt)
+</script>
 </body>
 
 </html>

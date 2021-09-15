@@ -25,7 +25,16 @@
   </div>
 
   <script>
-    
+      document.querySelector('.stop').addEventListener('click', function(e){
+          console.log(this)
+          console.log(e.target)     //      Для получения конкретного вложенного элемента
+
+      })
+
+      document.querySelector('.stop').addEventListener('click', function(e){
+          e.stopPropagation()
+      })
+
   </script>
 </body>
 

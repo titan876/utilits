@@ -9,10 +9,15 @@
 </head>
 
 <body>
-
-  <script>
-    
-  </script>
+    <script>
+        document.addEventListener('keydown', function(e){ //      keyup - Когда клавиша отпущена  keydown - клавиша нажата
+            // console.log('Код: ' + e.code)   //      Выводит код клавиши
+            // console.log('Сивол: ' + e.key)  //      Выводит нажатый символ
+            if(e.code == "KeyZ" && (e.ctrlKey || e.metaKey)){   //      Проверка нажания ctrl + z
+                console.log("Вы нажали ctrl + z")
+            }
+    })
+    </script>
 </body>
 
 </html>

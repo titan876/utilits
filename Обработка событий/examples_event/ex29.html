@@ -9,10 +9,35 @@
 </head>
 
 <body>
+    <script>
+        function hotKeys(func, ...codes){
+            let pressed = new Set()
+            document.addEventListener('keydown', function(e){
+                pressed.add(e.code)
+                for(let code of codes){
+                    if(!pressed.has(code)){
+                        return
+                    }
+                }
+                pressed.clear()
+                func()
+            })
+            document.addEventListener('keyup', function(e){
+                pressed.delete(e.code)
+            })
+        }
 
-  <script>
-    
-  </script>
+        hotKeys(function(){
+            console.log("Вы нажали F+G")    //      Тут передаем функцию, которая сработает при нажатии клавиш
+        }, "keyF")
+
+        hotKeys(function(){
+            console.log("Вы нажали T+L")    //      Тут передаем функцию, которая сработает при нажатии клавиш
+        }, "keyT", "keyL")
+
+
+        /*          КОД НЕ РАБОЧИЙ          */
+    </script>
 </body>
 
 </html>

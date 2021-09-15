@@ -21,7 +21,55 @@
   <input type="text" placeholder="Text">
 
   <script>
-    
+      class $ { //      Создаем класс, он заменяет на $ qureySelector
+          constructor(selector, where = document){
+              this.self = where.querySelector(selector) //      Ищем по 1 элементу
+              this.elems = where.querySelectorAll(selector) //      Ищем по всем элементам
+          }
+          each(callback){   //      Метод для отдельных элементов
+              for(let elem of this.elems){
+                  callback(elem)
+              }
+          }
+          on(event, callback){  //      Метод для событий
+            for(let elem of this.elems){
+                  elem.addEventListener(event, callback)
+              }
+              return this   //      Для возможности писать сразу несколько событий для 1 элемента (строка 59)
+          }
+      }
+
+      new $('.block').self.innerHTML = " New Text"  //      То же что и querySelector
+
+      new $('p', new $('div').self).each(function(e){       //      Для конктретного поиска в теге DIV, в данном случае первый который найдется
+        // e.innerHTML = 1
+      })
+
+      new $('input').each(function(e){
+          e.style.fontSize = '20px'
+          e.value = '1'
+      })
+
+      new $('div').on('click', function(){
+          this.classList.toggle('bgc')
+      })
+
+    //   new $('input').on('focus', function(){
+    //       this.style.backgroundColor = 'tomato'
+    //   }).on('blur', function(){
+    //       this.style.backgroundColor = ''
+    //   })
+
+      let elems = document.querySelectorAll('input')    //      То же самое что и выше , только без класса
+      for(let item of elems){
+          item.addEventListener('focus', function(){
+            this.style.backgroundColor = 'tomato'
+          })
+          item.addEventListener('blur', function(){
+            this.style.backgroundColor = ''
+          })
+      }
+
   </script>
 </body>
 

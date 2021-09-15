@@ -54,6 +54,20 @@
 
     createTree('body', data);
 
+    let ul = document.querySelector('ul')
+    for(let li of ul.querySelectorAll('li')){
+        let span = document.createElement('span')
+        li.prepend(span)    //      Добавляем тег перед текстом
+        span.append(span.nextSibling)   //      Помещам текст из блока в тег span
+    }
+
+    ul.onclick = function(e){
+        if(e.target.tagName != 'SPAN') return
+        let childrenCOntainer = e.target.parentNode.querySelector('ul')
+        if(!childrenCOntainer) return
+        childrenCOntainer.hidden = !childrenCOntainer.hidden
+    }
+
     
   </script>
 </body>

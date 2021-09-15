@@ -21,7 +21,11 @@
   </form>
 
   <script>
-
+      for(let elem of document.querySelectorAll('*')){   //      Выбор всех элементов
+        elem.addEventListener('click', function(e){ //      Отслеживаем фазу погружения
+            console.log(elem.tagName + " - Фаза " + e.eventPhase)
+        }, true)    
+    }
   </script>
 </body>
 

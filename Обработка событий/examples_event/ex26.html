@@ -10,9 +10,38 @@
 
 <body>
   <!-- ul#list>li*6{Item $} -->
-  
+  <ul id="list">
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+      <li>item 4</li>
+      <li>item 5</li>
+      <li>item 6</li>
+  </ul>
   <script>
-    
+      list.onclick = function(e){
+          if(e.target.tagName != 'LI') return
+          if(e.ctrlKey || e.metaKey){
+            toggleSelect(e.target)
+          }else{
+            singleSelect(e.target)
+          }
+      }
+
+      list.onmousedown = function(){
+          return false
+      }
+
+      function toggleSelect(li){
+          li.classList.toggle('bgc')
+      }
+
+      function singleSelect(li){
+          for(let elem of list.querySelectorAll('.bgc')){
+              elem.classList.remove('bgc')
+          }
+          li.classList.add('bgc')
+      }
   </script>
 </body>
 

@@ -32,7 +32,21 @@
   </table>
 
   <script>
+      let currentTd
+      table.onclick = function(e){
+          let td = e.target.closest('td')   //      Ищем родительский элемент td , даже если есть другоие теги внутри td
+          if(!td) return    //  Если Td не найден, то выходим
+          if(!table.contains(td))  return  //      если в таблице нет td , так же выходим
+          hover(td)     //      вызываем функцию hover
+      }
 
+      function hover(td){
+          if(currentTd){    //      Проверяем есть ли уже ячейка в функции , что бы с нее убрать подсветку
+            currentTd.classList.remove('bgc')
+          }
+          currentTd = td
+          currentTd.classList.add('bgc')    //      Добавляем на нажатую ячейку подсветку
+      }
   </script>
 </body>
 

@@ -2,69 +2,90 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 40 - Депозитный калькулятор</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 40 - Депозитный калькулятор</title>
 </head>
 
 <body id="dark">
-  <h1>Депозитный калькулятор</h1>
+    <h1>Депозитный калькулятор</h1>
 
-  <div class="d-flex">
-    <form name="calculator">
-      <table>
-        <tr>
-          <td>Первоначальный депозит</td>
-          <td>
-            <input name="money" type="number" value="10000" required>
-          </td>
-        </tr>
-        <tr>
-          <td>Срок вклада?</td>
-          <td>
-            <select name="months">
-              <option value="3">3 (минимум)</option>
-              <option value="6">6 (полгода)</option>
-              <option value="12" selected>12 (год)</option>
-              <option value="18">18 (1.5 года)</option>
-              <option value="24">24 (2 года)</option>
-              <option value="30">30 (2.5 года)</option>
-              <option value="36">36 (3 года)</option>
-              <option value="60">60 (5 лет)</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Годовая процентная ставка?</td>
-          <td>
-            <input name="interest" type="number" value="5" required>
-          </td>
-        </tr>
-      </table>
-    </form>
+    <div class="d-flex">
+        <form name="calculator">
+            <table>
+                <tr>
+                    <td>Первоначальный депозит</td>
+                    <td>
+                        <input name="money" type="number" value="10000" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Срок вклада?</td>
+                    <td>
+                        <select name="months">
+                            <option value="3">3 (минимум)</option>
+                            <option value="6">6 (полгода)</option>
+                            <option value="12" selected>12 (год)</option>
+                            <option value="18">18 (1.5 года)</option>
+                            <option value="24">24 (2 года)</option>
+                            <option value="30">30 (2.5 года)</option>
+                            <option value="36">36 (3 года)</option>
+                            <option value="60">60 (5 лет)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Годовая процентная ставка?</td>
+                    <td>
+                        <input name="interest" type="number" value="5" required>
+                    </td>
+                </tr>
+            </table>
+        </form>
 
-    <table id="diagram">
-      <tr>
-        <th>Было</th>
-        <th>Станет</th>
-      </tr>
-      <tr>
-        <th id="money-before"></th>
-        <th id="money-after"></th>
-      </tr>
-      <td>
-        <div style="background: tomato;width:40px;height:100px"></div>
-      </td>
-      <td>
-        <div style="background: springgreen;width:40px;height:0" id="height-after"></div>
-      </td>
-    </table>
-  </div>
+        <table id="diagram">
+            <tr>
+                <th>Было</th>
+                <th>Станет</th>
+            </tr>
+            <tr>
+                <th id="money-before"></th>
+                <th id="money-after"></th>
+            </tr>
+            <td>
+                <div style="background: tomato;width:40px;height:100px"></div>
+            </td>
+            <td>
+                <div style="background: springgreen;width:40px;height:0" id="height-after"></div>
+            </td>
+        </table>
+    </div>
 
-  <script>
-   
-  </script>
+    <script>
+        let form = document.forms.calculator //      Задаем в переменную нашу форму
+
+        form.money.oninput = calculate //      Вызываем функцию после изменения значений
+        form.months.oninput = calculate
+        form.interest.oninput = calculate
+
+        function calculate() {
+            let initail = form.money.value //      Передаем в переменную значение из инпута
+            if (!initail) return //      Проверяем заполнено ли поле
+            let interest = form.interest.value * 0.01 //      переводим старвку в %
+            if (!interest) return
+            let year = form.months.value / 12 //      переводим месяцы в года
+            if (!year) return
+
+            let result = Math.round(initail * (1 + interest * year)) //      считаем результат
+
+            let height = result / form.money.value * 100 + 'px' //      Рисуем график
+            document.getElementById('height-after').style.height = height //  Добавляем значение в высоту колонки
+            document.getElementById('money-before').innerHTML = form.money.value //  Добавляем сумму
+            document.getElementById('money-after').innerHTML = result //  Добавляем полученную сумму по итогом посчетов
+        }
+        calculate()
+    </script>
 </body>
 
 </html>

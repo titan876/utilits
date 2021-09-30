@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 1 - Работа с файлами и FileReader</title>
+</head>
+
+<body>
+    <input type="file" onchange="openFile(this)">
+
+    <script>
+        function openFile(input) {
+            let file = input.files[0] //  псевдомассив выбранных файлов
+            let reader = new FileReader()
+            reader.readAsText(file)
+
+            reader.onload = function() { //  Просматриваем результат через консоль после загрузки файла, выводт текст в файле в консоль
+                console.log(reader.result);
+            }
+
+            reader.onerror = function() { //  Выводит ошибку в консоль при наличии
+                console.log(reader.error);
+            }
+        }
+    </script>
+</body>
+
+</html>

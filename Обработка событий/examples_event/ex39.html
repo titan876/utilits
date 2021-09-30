@@ -2,28 +2,57 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 39 - Выделение Selection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 39 - Выделение Selection</title>
 </head>
 
 <body>
-  
-  <p id="p">Текст: <i>курсивный текст</i> и <b>жирный текст</b></p>
 
-  От<br>
-  <input type="text" disabled id="from"><br>
-  До<br>
-  <input type="text" disabled id="to"><br>
+    <p id="p">Текст: <i>курсивный текст</i> и <b>жирный текст</b></p>
 
-  <textarea id="area" cols="30" rows="4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo a quaerat praesentium cum, repellat rem dolores eos totam minus reprehenderit quae nulla ullam delectus, expedita quos magni quasi. Fuga, exercitationem!</textarea>
-  <br>
-  <button id="button">Кнопка с текстом</button>
+    От<br>
+    <input type="text" disabled id="from"><br> До
+    <br>
+    <input type="text" disabled id="to"><br>
 
-  <script>
-    
-  </script>
+    <textarea id="area" cols="30" rows="4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo a quaerat praesentium cum, repellat rem dolores eos totam minus reprehenderit quae nulla ullam delectus, expedita quos magni quasi. Fuga, exercitationem!</textarea>
+    <br>
+    <button id="button">Кнопка с текстом</button>
+
+    <script>
+        document.onselectionchange = function() { //      Отслеживаем моменты выделения
+            let {
+                anchorNode,
+                anchorOffse,
+                focusNode,
+                focusOffset
+            } = document.getSelection()
+            from.value = `${anchorNode && anchorNode.data}:${focusOffset}`
+            to.value = `${anchorNode && anchorNode.data}:${focusOffset}`
+
+            console.log(document.getSelection().toString())
+        }
+
+        document.getSelection().setBaseAndExtent(p, 0, p, p.childNodes.length) //      Можно использовать где угодно, выделяет целую строку
+
+        area.onselect = function() { //      Показывает начало и конец выделенной области
+            console.log(`Начало: ${area.selectionStart} Конец: ${area.selectionEnd}`)
+        }
+
+        area.onfocus = () => { //      Устанавливаем курсор на 10 символ
+            setTimeout(() => {
+                area.selectionStart = area.selectionEnd = 10
+            })
+        }
+
+        p.onselectstart = () => false //      Запрещаем выделение элемента
+
+        document.onselectionchange = function() { //      Запрещаем выделение на всем документе (2 способ)
+            document.getSelection().empty()
+        }
+    </script>
 </body>
 
 </html>

@@ -2,19 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 37 - Скрипты async, defer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 37 - Скрипты async, defer</title>
 
 </head>
 
 <body>
-  
-  
-  <script async src=""></script>
-  <script defer src=""></script>
-  
+
+
+    <script async src=""></script>
+    <!--        async не ждет остальные скрипты при загрузке, как и другие скрипты не ждут его. Используется в основном для добавления рекламы и т.д.         -->
+    <script defer src=""></script>
+    <!--         С помощью Defer скрипт не блокирует дальнейшую загрузку страницы, то есть если скрипт загружается долго, то браузер подгружает его уже после загрузки самой страницы. Указывается только для внешних скриптов      -->
+
 </body>
 
 </html>

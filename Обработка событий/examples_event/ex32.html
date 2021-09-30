@@ -2,48 +2,46 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 32 - Управление с клавиатуры</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 32 - Управление с клавиатуры</title>
 </head>
 
 <body>
 
-  <img src="..//img/1.jpg" id="image">
+    <img src="..//img/1.jpg" id="image">
 
-<script>
-    image.tabIndex = 0
+    <script>
+        image.tabIndex = 0
 
-    image.onclick = function(){
-        this.style.left = this.getBoundingClientRect().left + 'px'
-        this.style.left = this.getBoundingClientRect().top + 'px'
-        this.style.position = 'fixed'
+        image.onclick = function() {
+            this.style.left = this.getBoundingClientRect().left + 'px'
+            this.style.top = this.getBoundingClientRect().top + 'px'
+            this.style.position = 'fixed'
 
-        image.onkeydown = function(e){
-            switch(e.key){
-                case 'ArrowLeft':
-                    this.style.left = parseInt(this.style.left) - this.offsetWidth + 'px'
-                    console.log("Работает")
-                    return false
-                case 'ArrowRight':
-                    this.style.left = parseInt(this.style.left) + this.offsetWidth + 'px'
-                    console.log("Работает")
-                    return false
-                case 'ArrowUp':
-                    this.style.top = this.style.top - this.offsetHeight + 'px'
-                    console.log("Работает")
-                    return false
-                case 'ArrowDown':
-                    this.style.top = this.style.top + this.offsetHeight + 'px'
-                    console.log("Работает")
-                    return false
+            image.onkeydown = function(e) {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        this.style.left = parseInt(this.style.left) - this.offsetWidth + 'px'
+                        console.log("Работает")
+                        return false
+                    case 'ArrowRight':
+                        this.style.left = parseInt(this.style.left) + this.offsetWidth + 'px'
+                        console.log("Работает")
+                        return false
+                    case 'ArrowUp':
+                        this.style.top = parseInt(this.style.top) - this.offsetHeight + 'px'
+                        console.log("Работает")
+                        return false
+                    case 'ArrowDown':
+                        this.style.top = parseInt(this.style.top) + this.offsetHeight + 'px'
+                        console.log("Работает")
+                        return false
+                }
             }
         }
-    }
-
-    /*          КНОПКИ ВВЕРХ И ВНИЗ НЕ РАБОТАЮТ         */
-</script>
+    </script>
 </body>
 
 </html>

@@ -2,24 +2,28 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 35 - Событие Submit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 35 - Событие Submit</title>
 </head>
 
 <body>
-  
-  <form class="form">
-    <input type="text">
-    <input type="submit" value="Кнопка Submit">
-    <input type="image" value="Кнопка Image">
-  </form>
-  
 
-  <script>
-    
-  </script>
+    <form class="form">
+        <input type="text">
+        <input type="submit" value="Кнопка Submit">
+        <input type="image" value="Кнопка Image">
+    </form>
+
+
+    <script>
+        let form = document.forms[0] //      Добавляем форму в переменную
+        form.onsubmit = function(e) { //      Событие срабатывает при нажатии Enter
+            console.log('Отправка формы')
+            e.preventDefault()
+        }
+    </script>
 </body>
 
 </html>

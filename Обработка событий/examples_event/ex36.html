@@ -2,17 +2,31 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 36 - Загрузка документа и ресурсов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 36 - Загрузка документа и ресурсов</title>
 </head>
 
 <body>
 
-  <script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e) { //      Срабатывает после постройки всей страницы HTML
+            console.log('DOM построен\n')
+        })
 
-  </script>
+        window.onload = function(e) { //      Срабатывает после загрузки всей страницы с картинками, видео и т.д.
+            console.log('Страница и все ресурсы были загружены')
+        }
+
+        window.addEventListener("unload", function(e) { //      Срабатывает после закрытия страницы. Используется для отправки какой-либо статистики
+
+        })
+
+        window.onbeforeunload = function(e) { //      Предотвращает уход или обновления страницы
+            return false
+        }
+    </script>
 </body>
 
 </html>

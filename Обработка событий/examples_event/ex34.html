@@ -2,18 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css" id="theme">
-  <title>Пример 34 - События cut / copy / paste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" id="theme">
+    <title>Пример 34 - События cut / copy / paste</title>
 </head>
 
 <body>
-  <input type="text" id="input">
+    <input type="text" id="input">
 
-  <script>
-    
-  </script>
+    <script>
+        input.oncut = input.oncopy = input.onpaste = function(e) {
+            console.log(e.type + ' - ' + e.clipboardData.getData('text/plain'))
+            return false
+        }
+    </script>
 </body>
 
 </html>

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 7 - Символьные классы</title>
-</head>
-<body>
-  <a href="">+7(995)-125-78-96</a>
 
-  <script>
-    
-  </script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 7 - Символьные классы</title>
+</head>
+
+<body>
+    <a href="">+7(995)-125-78-96</a>
+
+    <script>
+        let str = document.querySelector('a').textContent
+        let regexp = /\d/g //   
+            // let number = str.match(regexp).join('')
+        let number = str.replace(/\D/g, '') //  То же самое что и выше
+        document.querySelector('a').setAttribute('href', `tel:+${number}`)
+            /*
+                \s - позволяет найти все пробелы
+                \w - ищет латиницу, нижние подчеркивания и цифры
+                \d - ищет цифры с 0 до 9
+                \D - любой сивол кроме чисел
+                \S - 
+            */
+    </script>
 </body>
+
 </html>

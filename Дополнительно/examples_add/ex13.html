@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 13 - Наборы и диапазоны</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 13 - Наборы и диапазоны</title>
 </head>
+
 <body>
-  
-  <script>
-    
-  </script>
+
+    <script>
+        console.log("16 56 46 75".match(/[15]6/g)); //  Сначала либо 1 либо 5 , в конце обязательно 6
+        console.log("#F5e".match(/#[0-9A-F][\da-f][0-9A-f]/i));
+
+        // Исключающие диапазоны
+        // [^ayb] любой символ кроме a y b
+        // [^0-9] любой символ кроме цифр от 0 до 9 ( то же что и \D)
+
+        console.log('email@yandex.ru'.match(/[^\d\sA-Z]/gi)); //  Исключаем числа(d), все пробелы(S), и символы от A-Z
+    </script>
 </body>
+
 </html>

@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 18 - Опережающая и ретроспективная проверка</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 18 - Опережающая и ретроспективная проверка</title>
 </head>
+
 <body>
-  
-  <script>
-    
-  </script>
+
+    <script>
+        // X(?=Y) Найти Х за которым следует Y
+        console.log("Цена 5$".match(/\d+(?=\$)/));
+        // X(?!Y) Найти Х за которым НE следует Y
+        console.log("Цена 150$ или 541€".match(/\d+(?!$)/));
+        // (?<=Y)X Найти Х, который следует за Y
+        console.log("Цена $5".match(/(?<=\$)\d+/));
+        // X(?<!Y) Найти Х , который НЕ следует за Y
+        console.log("Цена $5 или €456".match(/(?<!\$)\d+/));
+        // Скобочные группы
+        console.log("Цена 5$".match(/\d+(?=(\$|kr))/));
+    </script>
 </body>
+
 </html>

@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 17 - Альтернация (ИЛИ)</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 17 - Альтернация (ИЛИ)</title>
 </head>
+
 <body>
-  
-  <script>
-    
-  </script>
+
+    <script>
+        let regexp = /html|css|java(script)?/gi //  В скобках указывается либо Java либо JavaScript
+        let str = "Сначала повявлся язык Java, затем HTML, потом JavaScript"
+        console.log(str.match(regexp));
+
+        let timeRegExp = /([01]\d|2[0-3]):[0-5]\d/g //  Формат Времени
+        console.log("00:00 10:20 23:99 1:3 01:59".match(timeRegExp));
+    </script>
 </body>
+
 </html>

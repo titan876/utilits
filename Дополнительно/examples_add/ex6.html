@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 6 - Регулярные выражения</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 6 - Регулярные выражения</title>
 </head>
+
 <body>
-  
-  <script>
-    
-  </script>
+
+    <script>
+        /*
+                                                                    ФЛАГИ
+                                                                    i - Выполняем поиск не завизящий от регистра
+                                                                    g - находит все совпадения , а не только первое
+                                                                    m - включает многострочный режим
+                                                                    s - видит . как /n
+                                                                    u - включает полную поддержку юникода
+                                                                    y - режим поиска на конкретной позиции в тексте
+                                                                */
+
+        let string = 'Строка, еще одна строка'
+            // console.log(string.match(/Строка/gi)); //  g i - флаги
+            // console.log(string.replace(/Строка/ig, "Новая стркоа"));    //      Заменяем строку
+            // console.log(string.replace(/Строка/ig, "$& 1")); //      Добавляем символ после найденного элемента
+        console.log(/Строка/gi.test(string)); //    если выражение существует в строке , то передает true
+    </script>
 </body>
+
 </html>

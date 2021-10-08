@@ -2,18 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 19 - Поиск на заданной позиции</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 19 - Поиск на заданной позиции</title>
 </head>
 
 <body>
 
-  <script>
-    
-  </script>
+    <script>
+        let str = 'let varName = "value"'
+        let regexp = /\w+/y //  проверяет любое кол-во символов
+
+        regexp.lastIndex = 3
+        console.log(regexp.exec(str));
+
+        regexp.lastIndex = 4
+        console.log(regexp.exec(str))
+    </script>
 </body>
 
 </html>

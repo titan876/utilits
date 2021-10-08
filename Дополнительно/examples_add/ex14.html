@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Пример 14 - Квантификаторы</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 14 - Квантификаторы</title>
 </head>
+
 <body>
-  
-  <script>
-    
-  </script>
+
+    <script>
+        // console.log('#effd05 #fff #ff0000'.match(/#[\da-f]+/ig)); //  в фигурных скобках указывается сколько раз применить выражение , начальное и конечное (3-6), от 3 и дальше {3,} ( если 1 и больше , можно поставить + после квадратных скобок), ? - от 0 до 1; * - от 0 до любого значения
+        // console.log('+7(999)-523-45-67'.match(/\d+/g).join('')); // все числа от 1 и больше
+        // console.log('0 5 17.251 952,54'.match(/\d+[.,]\d+/g)); //  можно указать несколько символов в условии
+        console.log('<body> </h1> <h1> текст 156'.match(/<\/?[a-z][a-z0-9]*>/ig)); //  ищим теги
+        console.log('привет.. пока... досвидания..... здравствуйте..'.match(/\.{3,}/g)); // Находим от 3 точек
+        console.log('Текст "что - то" Текст "в кавычках"'.match(/"[^"]+"/g)); // Ленивый режим
+    </script>
 </body>
+
 </html>
